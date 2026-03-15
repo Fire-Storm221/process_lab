@@ -12,17 +12,15 @@ int main() {
     printf("PID: %d\n", getpid());
     printf("PPID: %d\n\n", getppid());
     
-    pid_t pid = fork(); // создаём копию процесса
+    pid_t pid = fork(); 
     
     if (pid == 0) {
-        // Это выполняется в дочернем процессе
         printf("ДОЧЕРНИЙ ПРОЦЕСС (создан через fork):\n");
         printf("PID: %d (новый идентификатор)\n", getpid());
         printf("PPID: %d (идентификатор родителя)\n", getppid());
     } 
     else if (pid > 0) {
-        // Это выполняется в родительском процессе
-        wait(NULL); // ждём завершения дочернего процесса
+        wait(NULL); 
         printf("\nРодительский процесс завершён\n");
     }
     
